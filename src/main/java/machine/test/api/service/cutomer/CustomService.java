@@ -22,6 +22,7 @@ public class CustomService {
         return customerDetails;
     }
 
+
     public Optional<CUSTOMERDETAILS> verifyCustomerDetails(String customerNumber) {
         CUSTOMERDETAILS customerDetails = customerDetailsCache.getIfPresent(customerNumber);
         if (customerDetails != null) {
