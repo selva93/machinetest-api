@@ -13,7 +13,7 @@ import java.util.Map;
         "WARNING_MSG_LIST",
         "CUST_INFO"
 })
-public class GetCustomerInfoResult {
+public class GETCUSTOMERRESULT {
 
     @JsonProperty("RETURN_CODE")
     private String rETURNCODE;
