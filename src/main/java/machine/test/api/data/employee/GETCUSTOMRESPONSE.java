@@ -9,21 +9,21 @@ import java.util.Map;
 @JsonPropertyOrder({
         "getCustomerInfoResult"
 })
-public class GetCustomerInfoResponse {
+public class GETCUSTOMRESPONSE {
 
     @JsonProperty("getCustomerInfoResult")
-    private GetCustomerInfoResult getCustomerInfoResult;
+    private GETCUSTOMERRESULT GETCUSTOMERRESULT;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("getCustomerInfoResult")
-    public GetCustomerInfoResult getGetCustomerInfoResult() {
-        return getCustomerInfoResult;
+    public GETCUSTOMERRESULT getGETCUSTOMERRESULT() {
+        return GETCUSTOMERRESULT;
     }
 
     @JsonProperty("getCustomerInfoResult")
-    public void setGetCustomerInfoResult(GetCustomerInfoResult getCustomerInfoResult) {
-        this.getCustomerInfoResult = getCustomerInfoResult;
+    public void setGETCUSTOMERRESULT(GETCUSTOMERRESULT GETCUSTOMERRESULT) {
+        this.GETCUSTOMERRESULT = GETCUSTOMERRESULT;
     }
 
     @JsonAnyGetter
