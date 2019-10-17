@@ -12,7 +12,6 @@ import java.util.Optional;
 public class CustomService {
 
     Cache<String, CUSTOMERDETAILS> customerDetailsCache = CacheBuilder.newBuilder().build();
-
     public CUSTOMERDETAILS saveCustomerDetails(RESPONSE customerInfo) {
         CUSTOMERDETAILS customerDetails = new CUSTOMERDETAILS();
         customerDetails.setCustomerNumber(customerInfo.getResponseXML().getGetCustomerInfoResponse().getGETCUSTOMERRESULT().getCUSTINFO().getCUSTNO());
@@ -21,7 +20,6 @@ public class CustomService {
         customerDetailsCache.put(customerDetails.getCustomerNumber(), customerDetails);
         return customerDetails;
     }
-
 
     public Optional<CUSTOMERDETAILS> verifyCustomerDetails(String customerNumber) {
         CUSTOMERDETAILS customerDetails = customerDetailsCache.getIfPresent(customerNumber);
