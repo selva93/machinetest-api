@@ -7,27 +7,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-public class Department {
+public class DepartModel {
     @Id
     @GeneratedValue
     private long id;
     private String name;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Employee employee;
+    private EmpModel employee;
 
-    public Employee getEmployee() {
+    public EmpModel getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(EmpModel employee) {
         this.employee = employee;
     }
 
-    public Department() {
+    public DepartModel() {
     }
 
-    public Department(String name) {
+    public DepartModel(String name) {
         this.name = name;
     }
 
