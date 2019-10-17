@@ -13,7 +13,6 @@ public class FullTimeEmpModel implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="employee_id")
     private EmpModel employee;
