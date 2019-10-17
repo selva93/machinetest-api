@@ -9,18 +9,14 @@ import java.io.Serializable;
 @JsonSerialize
 @Entity
 @Data
-public class VendorEmployee implements Serializable {
-
-
+public class FullTimeEmpModel implements Serializable {
     @Id
     @GeneratedValue
     private long id;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="employeeid_id")
-    private Employee employee;
-
-    private String VendorName;
-    private Long vendorPeriod;
-
+    @JoinColumn(name="employee_id")
+    private EmpModel employee;
+    private String date_of_joining;
+    private Long insurance_no;
 }
