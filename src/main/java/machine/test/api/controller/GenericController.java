@@ -22,7 +22,7 @@ public abstract class GenericController<T> {
         if(optionalT.isPresent()) {
             return new ResponseEntity<>(optionalT.get(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Can not find the details for the id "+id, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Unable to fetch the details for the id "+id, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -47,6 +47,6 @@ public abstract class GenericController<T> {
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> delete(@PathVariable("id") Long id) {
         tGenericService.deleteById(id);
-        return new ResponseEntity<>("The requested "+ id +" details are deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>("The request "+ id +" is deleted successfully", HttpStatus.OK);
     }
 }
