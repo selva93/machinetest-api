@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RequestMapping("/customer")
 @Controller
-public class CustomController {
+public class CustController {
 
     @Autowired
     private CustomService customService;
@@ -29,15 +29,14 @@ public class CustomController {
         return new ResponseEntity<>(customerDetails, HttpStatus.OK);
     }
 
-    @ApiResponses({@ApiResponse(code = 200, response = CUSTOMERDETAILS.class, message = "ok"), @ApiResponse(code = 404, message = "Unable to find the details for the customer number")})
+    @ApiResponses({@ApiResponse(code = 200, response = CUSTOMERDETAILS.class, message = "ok"), @ApiResponse(code = 404, message = "Unable to fatch customer details")})
     @GetMapping(value = "/find/{customer_number}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> find(@PathVariable("customer_number") String customerNumber) {
         Optional<CUSTOMERDETAILS> customerDetails = customService.verifyCustomerDetails(customerNumber);
         if(customerDetails.isPresent()) {
             return new ResponseEntity<>(customerDetails.get(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new Json("{message : Unable to find the details for the customer number "+customerNumber+"}"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Json("{message : Unable to fetch the customer details}"), HttpStatus.NOT_FOUND);
         }
     }
-
 }
