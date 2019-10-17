@@ -9,20 +9,20 @@ import java.util.Map;
 @JsonPropertyOrder({
         "getCustomerInfoResponse"
 })
-public class ResponseXML {
+public class RESPONSEXML {
 
     @JsonProperty("getCustomerInfoResponse")
-    private GetCustomerInfoResponse getCustomerInfoResponse;
+    private GETCUSTOMRESPONSE getCustomerInfoResponse;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("getCustomerInfoResponse")
-    public GetCustomerInfoResponse getGetCustomerInfoResponse() {
+    public GETCUSTOMRESPONSE getGetCustomerInfoResponse() {
         return getCustomerInfoResponse;
     }
 
     @JsonProperty("getCustomerInfoResponse")
-    public void setGetCustomerInfoResponse(GetCustomerInfoResponse getCustomerInfoResponse) {
+    public void setGetCustomerInfoResponse(GETCUSTOMRESPONSE getCustomerInfoResponse) {
         this.getCustomerInfoResponse = getCustomerInfoResponse;
     }
 
