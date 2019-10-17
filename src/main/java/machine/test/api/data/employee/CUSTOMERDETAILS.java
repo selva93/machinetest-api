@@ -3,7 +3,7 @@ package machine.test.api.data.employee;
 import lombok.Data;
 
 @Data
-public class CustomerDetails {
+public class CUSTOMERDETAILS {
     private String customerNumber;
     private String shortName;
     private CONTACTINFOV7_ contactinfov7;
