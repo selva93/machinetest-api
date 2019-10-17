@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CustomService {
+public class CustService {
 
     Cache<String, CUSTOMERDETAILS> customerDetailsCache = CacheBuilder.newBuilder().build();
     public CUSTOMERDETAILS saveCustomerDetails(RESPONSE customerInfo) {
