@@ -1,4 +1,4 @@
-package machine.test.api.service.customer;
+package machine.test.api.service.cutomer;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
