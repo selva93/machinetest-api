@@ -3,7 +3,7 @@ package machine.test.api.controller.customer;
 
 import machine.test.api.data.employee.CUSTOMERDETAILS;
 import machine.test.api.data.employee.RESPONSE;
-import machine.test.api.service.cutomer.CustomService;
+import machine.test.api.service.cutomer.CustService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +21,18 @@ import java.util.Optional;
 public class CustController {
 
     @Autowired
-    private CustomService customService;
+    private CustService custService;
 
     @PostMapping(value = "/save", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<CUSTOMERDETAILS> add(@RequestBody RESPONSE model) {
-        CUSTOMERDETAILS customerDetails = customService.saveCustomerDetails(model);
+        CUSTOMERDETAILS customerDetails = custService.saveCustomerDetails(model);
         return new ResponseEntity<>(customerDetails, HttpStatus.OK);
     }
 
     @ApiResponses({@ApiResponse(code = 200, response = CUSTOMERDETAILS.class, message = "ok"), @ApiResponse(code = 404, message = "Unable to fatch customer details")})
     @GetMapping(value = "/find/{customer_number}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> find(@PathVariable("customer_number") String customerNumber) {
-        Optional<CUSTOMERDETAILS> customerDetails = customService.verifyCustomerDetails(customerNumber);
+        Optional<CUSTOMERDETAILS> customerDetails = custService.verifyCustomerDetails(customerNumber);
         if(customerDetails.isPresent()) {
             return new ResponseEntity<>(customerDetails.get(), HttpStatus.OK);
         } else {
