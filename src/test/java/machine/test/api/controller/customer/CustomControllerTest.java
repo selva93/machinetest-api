@@ -1,6 +1,5 @@
 package machine.test.api.controller.customer;
 
-import machine.test.api.controller.customer.CustomerController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerControllerTest {
+public class CustomControllerTest {
 
     MockMvc mvc;
 
@@ -28,7 +27,7 @@ public class CustomerControllerTest {
     protected WebApplicationContext wac;
 
     @Autowired
-    protected CustomerController customerController;
+    protected CustController customController;
 
     private String DATA_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "\n" +
@@ -294,7 +293,7 @@ public class CustomerControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        this.mvc = standaloneSetup(this.customerController).build();
+        this.mvc = standaloneSetup(this.customController).build();
     }
 
     @Order(2)

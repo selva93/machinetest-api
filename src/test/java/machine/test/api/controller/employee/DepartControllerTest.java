@@ -1,7 +1,6 @@
 package machine.test.api.controller.employee;
 
-import machine.test.api.controller.employee.DepartmentController;
-import machine.test.api.model.employee.Department;
+import machine.test.api.model.employee.DepartModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DepartmentControllerTest {
+public class DepartControllerTest {
 
     MockMvc mvc;
 
@@ -34,15 +33,15 @@ public class DepartmentControllerTest {
     protected WebApplicationContext wac;
 
     @Autowired
-    protected DepartmentController departmentController;
+    protected DepartController departController;
 
-    Department department;
+    DepartModel departModel;
     Integer departmentId;
 
     @Before
     public void setUp() throws Exception {
-        this.mvc = standaloneSetup(this.departmentController).build();
-        department = new Department("IT Department");
+        this.mvc = standaloneSetup(this.departController).build();
+        departModel = new DepartModel("IT Department");
 
     }
 
@@ -56,7 +55,7 @@ public class DepartmentControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(departmentId))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(department.getName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(departModel.getName()));
     }
 
     @Test
@@ -71,7 +70,7 @@ public class DepartmentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].id").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].id").isNotEmpty())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(department.getName())).andReturn();
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(departModel.getName())).andReturn();
 
         List<Object> objectList = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsByteArray(), List.class);
         departmentId = (Integer) ((Map)objectList.get(0)).get("id");
@@ -84,31 +83,31 @@ public class DepartmentControllerTest {
         mvc.perform( MockMvcRequestBuilders
                 .post("/department/add")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsBytes(department))
+                .content(new ObjectMapper().writeValueAsBytes(departModel))
                 .accept(MediaType.APPLICATION_JSON)
                 )
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(department.getName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(departModel.getName()));
     }
 
     @Test
     public void update() throws Exception {
         findAll();
-        department.setId(departmentId);
-        department.setName(department.getName()+"-Updated");
+        departModel.setId(departmentId);
+        departModel.setName(departModel.getName()+"-Updated");
         mvc.perform( MockMvcRequestBuilders
                 .post("/department/update")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsBytes(department))
+                .content(new ObjectMapper().writeValueAsBytes(departModel))
                 .accept(MediaType.APPLICATION_JSON)
         )
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(departmentId))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(department.getName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(departModel.getName()));
     }
 
     @Test
