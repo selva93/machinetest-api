@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/employee")
 @Controller
-public class EmployeeController extends GenericController<EmpModel> {
+public class EmpController extends GenericController<EmpModel> {
 
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    public EmployeeController(EmpService empServiceImpl) {
+    public EmpController(EmpService empServiceImpl) {
         super(empServiceImpl);
     }
 }
