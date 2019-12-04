@@ -41,13 +41,7 @@ public class EmpControllerTest {
 
     @Test
     public void add() throws Exception {
-//        mvc.perform( MockMvcRequestBuilders
-//                .get("/v1/employee/add")
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.name").isNotEmpty());
+
     }
 
     @Test
